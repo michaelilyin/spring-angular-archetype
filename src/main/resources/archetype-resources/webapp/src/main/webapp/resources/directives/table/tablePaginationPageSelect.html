@@ -1,0 +1,8 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<span ng-class="!isValidNumberOfPage ? 'has-error' : ''">
+	<input type="text" class="select-page form-control ng-invalid"
+			style="width: 60px; display: inline" ng-model="inputPage"
+			ng-change="selectPageWithValidation(inputPage)">
+</span>

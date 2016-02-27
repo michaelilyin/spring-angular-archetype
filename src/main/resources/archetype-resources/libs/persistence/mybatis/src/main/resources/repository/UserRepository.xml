@@ -1,0 +1,23 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${package}.repository.UserRepository">
+
+    <select id="getUserViews" resultType="${package}.domain.UserView">
+        <include refid="${package}.repository.commonSql.pageSupportBegin"/>
+        <![CDATA[
+        SELECT
+          id as id,
+          name as name,
+          login as login,
+          email as email,
+          birthday as birthday
+        FROM users
+        ]]>
+        <include refid="${package}.repository.commonSql.pageSupportEnd"/>
+    </select>
+
+</mapper>

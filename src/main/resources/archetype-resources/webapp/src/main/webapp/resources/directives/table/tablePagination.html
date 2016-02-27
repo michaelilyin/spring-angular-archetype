@@ -1,0 +1,16 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<div ng-if="pages.length >= 2" class="form-inline">
+    <button type="button" class="btn btn-default form-group" ng-disabled="currentPage == 1" ng-click="selectPage(1)">&lt;&lt;</button>
+    <button type="button" class="btn btn-default form-group" ng-disabled="currentPage == 1" ng-click="selectPage(currentPage - 1)">&lt;</button>
+    <div class="form-group"><wm-grid-pagination-page-select></wm-grid-pagination-page-select> из {{numPages}}</div>
+    <button type="button" class="btn btn-default form-group" ng-disabled="numPages == currentPage || isEndOfCollection()" ng-click="selectPage(currentPage + plusPages + 1)">&gt;</button>
+    <button type="button" class="btn btn-default form-group" ng-disabled="numPages == currentPage || isEndOfCollection()" ng-click="selectPage(numPages)">&gt;&gt;</button>
+    <wm-grid-pagination-rows-set></wm-grid-pagination-rows-set>
+</div>
+
+<div class="pull-right">
+    <wm-grid-pagination-pagination-info></wm-grid-pagination-pagination-info>
+</div>
+

@@ -1,0 +1,54 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${package}.repository.commonSql">
+
+    <sql id="orderBySql">
+        <if test="sidx != null and sidx != ''">
+            <![CDATA[
+            ORDER BY ${symbol_dollar}{sidx}
+        ]]>
+            <if test="desc == true">
+                <![CDATA[
+                DESC
+            ]]>
+            </if>
+        </if>
+    </sql>
+
+    <sql id="pageSupportBegin">
+        <![CDATA[
+            SELECT x.*, ROW_NUMBER() OVER() AS rnum, COUNT(*) OVER() AS cnt
+            FROM (
+    ]]>
+    </sql>
+    <sql id="pageSupportEnd">
+        <![CDATA[
+            ) x
+            OFFSET (${symbol_pound}{page} - 1) * ${symbol_pound}{count}
+            LIMIT ${symbol_pound}{count}
+    ]]>
+    </sql>
+
+    <sql id="inList">
+        <foreach item="item" index="index" collection="list"
+                 open="(" separator="," close=")">
+            <![CDATA[
+            ${symbol_pound}{item}
+        ]]>
+        </foreach>
+    </sql>
+
+    <sql id="inStringList">
+        <foreach item="item" index="index" collection="list"
+                 open="(" separator="," close=")">
+            <![CDATA[
+            UPPER(${symbol_pound}{item})
+        ]]>
+        </foreach>
+    </sql>
+</mapper>

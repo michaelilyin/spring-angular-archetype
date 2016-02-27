@@ -1,0 +1,11 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<div modal-render="{{${symbol_dollar}isRendered}}" tabindex="-1" role="dialog"
+	class="modal" uib-modal-animation-class="fade" modal-in-class="in"
+	ng-style="{'z-index': 1050 + index*10, display: 'block'}">
+	<div wm-center-modal class="ar-dialog modal-dialog draggable"
+		ng-class="size ? 'modal-' + size : ''">
+		<div class="modal-content" uib-modal-transclude></div>
+	</div>
+</div>

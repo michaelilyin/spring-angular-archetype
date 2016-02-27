@@ -1,0 +1,51 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<div>
+
+	<div class="row">
+		<div class="col-lg-5">
+			<h3 style="margin-top: 0">{{config.title}}</h3>
+		</div>
+		<div class="col-lg-7">
+			<form class="form-inline pull-right">
+				<div class="form-group horizontal-spacer">
+					<button uib-tooltip="" ng-click="" type="button"
+						class="btn btn-success">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
+				</div>
+				<div wm-table-menu refresh-action="refreshData"
+					rows-on-page="colRowsOnPage" view-rows-on-page="viewRowsOnPage"
+					headers="config.columns"></div>
+			</form>
+		</div>
+	</div>
+
+	<div class="row">
+		<table class="table table-striped table-hover">
+			<colgroup>
+				<col ng-repeat="column in config.columns" class="{{column.css}}" width="{{column.width}}" ng-show="isShowColumn(${symbol_dollar}index)">
+			</colgroup>
+			<thead st-table="rowCollection" st-pipe="loadData" st-safe-src="data">
+				<tr>
+					<th class="grid-header" ng-repeat="column in config.columns" 
+						wm-st-sort="{{!column.disableSort ? column.id : ''}}" ng-show="isShowColumn(${symbol_dollar}index)">
+						{{column.label}}
+					</th>
+				</tr>
+			</thead>
+			<tbody ng-show="isLoading">
+	            <tr>
+	                <td colspan="{{config.columns.length}}" class="text-center"><wm-loader></wm-loader></td>
+	            </tr>
+            </tbody>
+			<tbody>
+				<tr ng-repeat="row in data" ng-include='getTemplateUrl()'></tr>
+			</tbody>
+			<tfoot>
+			</tfoot>
+		</table>
+	</div>
+
+</div>

@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>net.medvedmike</groupId>
-  <artifactId>vsu-test-archetype</artifactId>
+  <artifactId>spring-angular-quickstart</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>maven-archetype</packaging>
 
-  <name>vsu-test-archetype</name>
+  <name>Quickstart for Spring with Angular JS</name>
 
   <build>
     <extensions>
